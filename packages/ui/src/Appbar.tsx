@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "./button";
 
 interface AppbarProps {
@@ -5,8 +6,8 @@ interface AppbarProps {
         name?: string | null;
     },
     // TODO: can u figure out what the type should be here?
-    onSignin: any,
-    onSignout: any
+    onSignin?: any,
+    onSignout?: any
 }
 
 export const Appbar = ({
