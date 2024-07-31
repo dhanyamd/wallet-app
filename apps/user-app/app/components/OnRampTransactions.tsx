@@ -23,7 +23,7 @@ export const OnRampTransactions = ({
   title?: string
 }) => {
     if (!transactions.length) {
-        return <Card title={"Transactions"}  >
+        return <Card title={title}  >
             <div className="text-center pb-8 pt-8">
                 No Recent transactions
             </div>

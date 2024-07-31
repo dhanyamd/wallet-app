@@ -28,5 +28,13 @@
     "@types/react-dom": "^18.2.19",
     "eslint": "^8.57.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "description": "First, run the development server:",
+  "main": ".eslintrc.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -7,7 +7,7 @@ import { authOptions } from "../../lib/auth";
 
  async function getBalance() {
     const session = await getServerSession(authOptions);
-    const balance = await prisma.balance.findUnique({
+    const balance = await prisma.balance.findFirst({
         where: {
             userId: Number(session?.user?.id)
         }
@@ -34,7 +34,7 @@ async function getOnRampTransactions() {
 }
 
 export default async function() {
-    const balance = await getBalance();
+    const balance = await getBalance()
     const transactions = await getOnRampTransactions();
 
     return <div className="w-screen">
