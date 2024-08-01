@@ -7,26 +7,33 @@ export const merchantRouter = Router();
 const prismaClient = new PrismaClient()
 
 merchantRouter.post('/signup',async (req, res) => {
-    const {name, username, password} = await req.body;
-      
-    try{
-        await prismaClient.merchant.create({
-            data: {
-             name,
-             username,
-             password
-            }
-         })
-         res.json({
-             message : 'Signed up'
-         })
-        
+    const {name, username, password} =  req.body;
+       
+
+    await prismaClient.$transaction(async tx => {
+        try{
+        const merchant =  await tx.merchant.create({
+                data: {
+                 name,
+                 username,
+                 password
+                }
+             })
+
+             await tx.merchantAccount.create({
+                data: {
+                    merchantId : merchant.id 
+                }
+             })
+             res.json({
+                 message : 'Signed up'
+             })
     }catch(e) {
         return res.status(403).json({
             message : "Error while signing up"
         })
     }
-
+    })
 
 })
 

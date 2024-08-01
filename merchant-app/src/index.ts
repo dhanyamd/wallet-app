@@ -6,6 +6,6 @@ const app = express();
 app.use(express.json())
 
 app.use('/api/v1/user', userRouter)
-app.use('/api/v1/user', merchantRouter)
+app.use('/api/v1/merchant', merchantRouter)
 
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3001)
